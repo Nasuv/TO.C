@@ -3,19 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <title>Page 1-2</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: white;
+        }
+        .image-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* 최대 너비 */
+            overflow: hidden;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+        .hover-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .image-container:hover .hover-image {
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
     <a href="page2-2.html">
-    <div class="page-container">
-        <div class="image-container" onclick="goToPage('page1-2_hover.html')">
-            <img src="img/1-2.jpg" alt="Page 1-2 Image" class="main-image" id="page1-2-image">
-            <img src="img/hover-image1-2.jpg" alt="Page 1-2 Hover Image" class="hover-image" id="page1-2-hover-image">
+        <div class="image-container">
+            <img src="img/img2.jpg" alt="Page img2" class="main-image">
+            <img src="img/hover-image2.jpg" alt="hover-image2" class="hover-image">
         </div>
-    </div>
     </a>
-
-    <script src="script.js"></script>
 </body>
 </html>
