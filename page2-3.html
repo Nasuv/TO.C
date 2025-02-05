@@ -41,12 +41,32 @@
                 iframe.parentNode.removeChild(iframe); // iframe 제거
             }
         }
+
+        // 클릭을 막을 투명 레이어 생성
+        function addOverlay() {
+            const iframeWrapper = document.querySelector('.video-wrapper');
+            const overlay = document.createElement('div');
+            overlay.style.position = 'absolute';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '33%';  // 하단 1/3부분에만 투명 레이어 추가
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0)';  // 투명한 레이어
+            overlay.style.pointerEvents = 'none'; // 클릭 이벤트 차단
+            iframeWrapper.appendChild(overlay);
+        }
+
+        // 페이지 로딩 후 투명 레이어 추가
+        window.onload = function() {
+            addOverlay();
+            resetTimer();  // 타이머 초기화
+        };
     </script>
 
     <div class="page-container">
-        <div class="video-wrapper">
-            <iframe id="youtube-video" width="1200" height="675"
-                src="https://www.youtube.com/embed/Ek4VgK-d_7A?enablejsapi=1&autoplay=1"
+        <div class="video-wrapper" style="position: relative;">
+            <iframe id="youtube-video" width="1080" height="607"
+                src="https://www.youtube.com/embed/Ek4VgK-d_7A?enablejsapi=1&autoplay=0&rel=0&modestbranding=1"
                 title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen>
@@ -73,6 +93,11 @@
         .back-to-index-button:hover {
             background-color: black;
             color: white;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
         }
     </style>
 
