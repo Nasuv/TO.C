@@ -9,28 +9,28 @@
 
     <style>
         .video-wrapper {
-            position: relative; /* 추가: iframe을 감싸는 div에 상대적 위치 지정 */
-            display: inline-block; /* 추가: iframe 크기에 맞게 div 크기 조정 */
+            position: relative; /* iframe을 감싸는 div에 상대적 위치 지정 */
+            display: inline-block; /* iframe 크기에 맞게 div 크기 조정 */
         }
 
         iframe {
-            display: block; /* 추가: iframe을 block 요소로 설정 */
+            display: block; /* iframe을 block 요소로 설정 */
         }
 
         .back-to-index-button {
-            position: absolute; /* 추가: 버튼을 video-wrapper 기준으로 배치 */
-            bottom: -70px; /* 변경: 버튼을 iframe 아래로 70px 떨어뜨림 */
-            right: 10px; /* 변경: 우측에서 10px 간격 */
+            position: absolute; /* 버튼을 video-wrapper 기준으로 배치 */
+            bottom: -70px; /* 버튼을 iframe 아래로 70px 떨어뜨림 */
+            right: 10px; /* 우측에서 10px 간격 */
             background-color: rgba(255, 255, 255, 0.9); /* 반투명한 배경 */
             color: black;
-            padding: 12px 24px; /* 변경: 버튼 크기 조정 */
+            padding: 12px 24px; /* 버튼 크기 조정 */
             text-decoration: none;
             font-size: 14px;
             font-weight: bold;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s, color 0.3s;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 추가: 버튼에 그림자 효과 */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 버튼에 그림자 효과 */
         }
 
         .back-to-index-button:hover {
@@ -66,11 +66,10 @@
             });
         }
 
-        // 영상이 끝나면 영상 창을 제거
+        // 영상이 끝나면 index.html로 이동
         function onPlayerStateChange(event) {
             if (event.data === YT.PlayerState.ENDED) {
-                let iframe = document.getElementById('youtube-video');
-                iframe.parentNode.removeChild(iframe); // iframe 제거
+                window.location.href = "index.html"; // 영상 종료 후 이동할 페이지
             }
         }
     </script>

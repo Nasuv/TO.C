@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page 1-2</title>
+    <title>Page C</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap'); /* 이전 '뒤로가기' 버튼과 동일한 폰트 */
+
         body {
             display: flex;
             justify-content: center;
@@ -37,12 +39,41 @@
         .image-container:hover .hover-image {
             opacity: 1;
         }
+
+        /* 터치 문구 스타일 */
+        .touch-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px; /* 글씨 크기 */
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif; /* '뒤로가기' 버튼과 동일한 폰트 */
+            color: white; /* 글씨색 흰색 */
+            background-color: rgba(0, 0, 0, 0.7); /* 배경 검은색, 최대 불투명도 70% */
+            padding: 6px 15px; /* 크기 조정 */
+            border-radius: 6px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+            animation: fadeInOut 6s infinite ease-in-out; /* 애니메이션 주기 6초 */
+            white-space: nowrap;
+            opacity: 0;
+        }
+
+        /* 문구 점멸 애니메이션 */
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            50% { opacity: 0.7; } /* 최대 불투명도 70% */
+            100% { opacity: 0; }
+        }
     </style>
 </head>
 <body>
     <div class="image-container" onclick="goToPage()">
         <img src="img/img2.jpg" alt="Page img2" class="main-image">
         <img src="img/hover-image2.jpg" alt="hover-image2" class="hover-image">
+        
+        <!-- 터치 문구 추가 -->
+        <div class="touch-text">터치하여 편지를 열어보세요</div>
     </div>
 
     <script>
